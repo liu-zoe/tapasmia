@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<title>Tapas MIA</title>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel='stylesheet' href="fonts.css" type='text/css'>
+    <link rel="stylesheet" href="main.css">
+    <script>
+        fetch("data/audio_obj.json")
+            .then(response => response.json())
+            .then(data => {
+                // Create array of object keys
+                const keys = Object.keys(data)
+
+                // Generate random index based on number of keys
+                const randIndex = Math.floor(Math.random() * keys.length)
+
+                // Select a key from the array of keys using the random index
+                const randKey = keys[randIndex]
+
+                // Use the key to get the corresponding name from the "names" object
+                const selected_obj = data[randKey]
+
+                var divTab = document.querySelector("#artTab")
+
+                var title = document.createElement("h2")
+                title.innerText = selected_obj.title
+                divTab.appendChild(title)
+
+                var objimg = document.createElement("img")
+                objimg.src = "data/img/" + randKey + ".jpg"
+                divTab.appendChild(objimg)
+
+                var br = document.createElement("br")
+                divTab.appendChild(br)
+
+                var audio = document.createElement("audio")
+                audio.id = "audio-player"
+                audio.controls = "controls"
+                audio.src = "data/audio/" + randKey + ".mp3"
+                audio.type = "audio/mpeg"
+                divTab.appendChild(audio)
+                
+                // Can't use forEach, map, etc b/c inside asynchronous fn
+                const ptagKeys = ['continent', 'country', 'dated', 'culture', 'description', 'artist', 'text'];
+                const prefixlessKeys = ['artist', 'text'];
+                for (let index = 0; index < ptagKeys.length; index++) {
+                    const key = ptagKeys[index];
+                    if (!selected_obj[key]) { continue }
+                    const newElement = document.createElement("p")
+                    newElement.innerText = prefixlessKeys.includes(key) ? selected_obj[key] : `${key[0].toUpperCase()}${key.slice(1)}: ${selected_obj[key]}`;
+                    divTab.appendChild(newElement)
+                }
+
+                // if (selected_obj.continent != null) {
+                //     var continent = document.createElement("p")
+                //     continent.innerText = "Continent: " + selected_obj.continent
+                //     divTab.appendChild(continent)
+                // }
+                // if (selected_obj.country != null) {
+                //     var country = document.createElement("p")
+                //     country.innerText = "Country: " + selected_obj.country
+                //     divTab.appendChild(country)
+                // }
+
+                // if (selected_obj.dated != null) {
+                //     var dated = document.createElement("p")
+                //     dated.innerText = "Dated: " + selected_obj.dated
+                //     divTab.appendChild(dated)
+                // }
+
+                // if (selected_obj.artist != null) {
+                //     var artist = document.createElement("p")
+                //     artist.innerText = selected_obj.artist
+                //     divTab.appendChild(artist)
+                // }
+
+                // if (selected_obj.culture != null) {
+                //     var culture = document.createElement("p")
+                //     culture.innerText = "Culture: " + selected_obj.culture
+                //     divTab.appendChild(culture)
+                // }
+
+                // if (selected_obj.description != null) {
+                //     var description = document.createElement("p")
+                //     description.innerText = "Description: " + selected_obj.description
+                //     divTab.appendChild(description)
+                // }
+
+                // if (selected_obj.text != null) {
+                //     var objtext = document.createElement("p")
+                //     objtext.innerText = selected_obj.text
+                //     divTab.appendChild(objtext)
+                // }
+
+                var objlink = document.createElement('a');
+                objlink.href = "https://collections.artsmia.org/art/" + randKey
+                objlink.target = '_blank'
+                objlink.innerText = "See more on the Mia's website"
+                divTab.appendChild(objlink)
+            })
+    </script>
+</head>
+
+<body>
+    <div id="header" class="header">
+        <p>Tapas MIA</p>
+    </div>
+    <div class="container" style="margin-top:2rem">
+        <div id="notes" >
+            <p>Explore audio stops from Minneapolis Institute of Arts</p>
+            <p>Refresh to get a new art!</p>    
+        </div>
+
+        <div id="artTab"></div>
+
+    </div>
+</body>
+
+</html>

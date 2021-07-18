@@ -1,3 +1,9 @@
+# Project specific files
+/old
+/data/audio_obj_mini.json
+mia1_explore.py
+github.txt
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

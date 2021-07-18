@@ -1,0 +1,62 @@
+html {
+    height: 100%;
+}
+body{
+    height: 100vh; /* Avoid the IE 10-11 `min-height` bug. */
+    background-color: black;
+    text-align: center;
+  }
+.header{
+    font-size:3rem;
+    font-family: 'Zen Tokyo Zoo', cursive;
+    color: whitesmoke;
+    text-align: center;
+  }
+.container {
+    width:50%;
+    margin: 0 auto;
+    height: 100%;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.5rem;
+    color: white;
+    background: black;
+    /* Prevent Chrome, Opera, and Safari from letting these items shrink to smaller than their content's default minimum size. */
+}
+#notes {
+    text-align:center;
+    font-size: 1rem;
+}
+/*--------Style Links--------*/
+ /* unvisited link */
+ a:link {
+  color: hotpink;
+}
+
+/* visited link */
+a:visited {
+  color: gray;
+}
+
+/* mouse over link */
+a:hover {
+  color: hotpink;
+}
+
+/* selected link */
+a:active {
+  color: orangered;
+} 
+
+/* Responsive layout */
+
+/*For device width smaller than 420px*/
+@media (min-width: 360px) and (max-width: 420px) {
+  .container{
+    width: 100%;
+    margin:unset;
+  }
+
+  .header{
+    font-size:1.5rem;
+  }
+}
