@@ -1,8 +1,12 @@
 # Project specific files
 /old
 /data/audio_obj_mini.json
+/data/img/restricted
 mia_explore.py
 github.txt
+.DS_Store
+data/.DS_Store
+data/img/.DS_Store
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
