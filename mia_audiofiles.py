@@ -1,6 +1,6 @@
 #%% 
-## Project Name: mia1
-### Program Name: mia1_audiofiles.py
+## Project Name: mia
+### Program Name: mia_audiofiles.py
 ### Purpose: To download audio data of MIA Collections. 
 ##### Date Created: Mar 2nd 2021
 import os 
