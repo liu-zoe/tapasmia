@@ -1,6 +1,6 @@
 #%% 
-## Project Name: mia1
-### Program Name: mia1_data.py
+## Project Name: mia
+### Program Name: mia_data.py
 ### Purpose: To load in data of MIA Collections. 
 ##### Date Created: Mar 2nd 2021
 import requests
