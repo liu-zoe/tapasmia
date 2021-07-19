@@ -45,13 +45,15 @@ objid=list(audio_pd['id'].values)
 imglinks=dict()
 count=0
 for id in objid:
-    url='https://collections.artsmia.org/art/'+str(id)
-    url_r = requests.get(url)
-    x=url_r.text
-    pattern="https://[0-9].api.artsmia.org/"+str(id)+".jpg"
-    imgurls=list(set(re.findall(pattern, x)))
-    imglinks[id]=imgurls
-    count+=1
+    if (obj[obj['obj_id']==id]['restricted'].values[0]==1)\
+    or (isinstance(obj[obj['obj_id']==id]['image_copyright'].values[0], str)):
+        url='https://collections.artsmia.org/art/'+str(id)
+        url_r = requests.get(url)
+        x=url_r.text
+        pattern="https://[0-9].api.artsmia.org/"+str(id)+".jpg"
+        imgurls=list(set(re.findall(pattern, x)))
+        imglinks[id]=imgurls
+        count+=1
 # %%
 # Save imglinks dictionary to cvs
 img_pd=pd.DataFrame.from_dict(imglinks, orient='index')

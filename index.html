@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html>
-<title>Tapas MIA</title>
+<html lang="en">
 
 <head>
+    <title>Tapas MIA</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8"> 
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel='stylesheet' href="fonts.css" type='text/css'>
     <link rel="stylesheet" href="main.css">
@@ -29,9 +30,23 @@
                 title.innerText = selected_obj.title
                 divTab.appendChild(title)
 
-                var objimg = document.createElement("img")
-                objimg.src = "data/img/" + randKey + ".jpg"
-                divTab.appendChild(objimg)
+                if (!selected_obj.restricted && !selected_obj.image_copyright && selected_obj.image!="invalid") {
+                    var objimg = document.createElement("img")
+                    objimg.src = "data/img/" + randKey + ".jpg"
+                    divTab.appendChild(objimg)
+                } else if (selected_obj.image_copyright) {
+                    var image_copyr = document.createElement("p")
+                    image_copyr.innerText = "Image copyright restricted"
+                    divTab.appendChild(image_copyr)
+                } else if (selected_obj.restricted==1){
+                    var image_rest = document.createElement("p")
+                    image_rest.innerText = "Image copyright restricted"
+                    divTab.appendChild(image_rest)
+                } else {
+                    var image_na = document.createElement("p")
+                    image_na.innerText = "Image unavailable"
+                    divTab.appendChild(image_na)
+                }
 
                 var br = document.createElement("br")
                 divTab.appendChild(br)
