@@ -9,7 +9,7 @@ import requests
 import json
 import pandas as pd
 import numpy as np
-import re
+import re 
 APP_PATH = str(pathlib.Path(__file__).parent.resolve())
 #%% 
 # Read in objects from the csv file 
