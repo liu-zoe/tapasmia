@@ -30,14 +30,10 @@
                 title.innerText = selected_obj.title
                 divTab.appendChild(title)
 
-                if (!selected_obj.restricted && !selected_obj.image_copyright && selected_obj.image!="invalid") {
+                if (!selected_obj.restricted && selected_obj.image!="invalid") {
                     var objimg = document.createElement("img")
                     objimg.src = "data/img/" + randKey + ".jpg"
                     divTab.appendChild(objimg)
-                } else if (selected_obj.image_copyright) {
-                    var image_copyr = document.createElement("p")
-                    image_copyr.innerText = "Image copyright restricted"
-                    divTab.appendChild(image_copyr)
                 } else if (selected_obj.restricted==1){
                     var image_rest = document.createElement("p")
                     image_rest.innerText = "Image copyright restricted"
