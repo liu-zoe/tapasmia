@@ -54,7 +54,7 @@
                 divTab.appendChild(audio)
                 
                 // Can't use forEach, map, etc b/c inside asynchronous fn
-                const ptagKeys = ['continent', 'country', 'dated', 'culture', 'description', 'artist', 'text'];
+                const ptagKeys = ['continent', 'country', 'artist', 'dated', 'culture', 'description', 'text'];
                 const prefixlessKeys = ['artist', 'text'];
                 for (let index = 0; index < ptagKeys.length; index++) {
                     const key = ptagKeys[index];
